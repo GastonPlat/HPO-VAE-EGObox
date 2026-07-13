@@ -64,3 +64,9 @@ The optimization is formulated as the following:
 * **KL factor** 
 * **Network depth** (Number of layers in the encoder and decoder)
 * **Network width** (Number of neurons per layer in the encoder and decoder)
+
+
+ ---
+
+## Data 
+Data are located within the folder `src/HPO_VAE_EGObox/Data/AhsbyVAE/Data_material_ashby/ashby_from_granta_selection3.xlsx`. Feel free to use other datasets; however, the framework is based on .xlsx files so be careful. 
