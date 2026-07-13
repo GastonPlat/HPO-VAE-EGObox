@@ -1,10 +1,10 @@
-# 📦 HPO-VAE-EGObox
+# HPO-VAE-EGObox
 
 This framework proposes to search for the optimal hyperparameter settings of a **Variational AutoEncoder (VAE)** using a Bayesian optimization algorithm.
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 Ensure you have **Python 3.11** or **3.12** installed and that you are located at the root of the repository. Run the following commands to set up your environment:
 
@@ -22,7 +22,7 @@ poetry install
 
 ---
 
-## 🚀 Usage
+## Usage
 
 You can find a ready-to-use example in `src/HPO-VAE/Example/launch_script.py`.
 
@@ -35,7 +35,7 @@ poetry run python -m HPO_VAE_EGObox.Example.launch_script
 
 ---
 
-## 🧩 Core Architecture
+## Core Architecture
 
 The global architecture is divided into three main components:
 
@@ -47,7 +47,7 @@ The global architecture is divided into three main components:
 
 ---
 
-## 🧮 The Optimization Problem
+## The Optimization Problem
 
 The framework seeks to minimize a weighted combination of the normalized Mean Squared Error (nMSE) for reconstructed Young's Modulus ($E$) and mass density ($\rho$), alongside the normalized energy consumption ($\text{nrj}$).
 
