@@ -1,22 +1,66 @@
-# HPO-VAE-EGObox
-This framework proposes to search for the optimal hyperparameter settings of a Variational AutoEncoder (VAE) using a Bayesian optimization algorithm. 
+# 📦 HPO-VAE-EGObox
 
-# How to install
-Make sure you already installed python 3.11 or 3.12, and that you are at the root of the repo. Then:
+This framework proposes to search for the optimal hyperparameter settings of a **Variational AutoEncoder (VAE)** using a Bayesian optimization algorithm.
+
+---
+
+## ⚙️ Installation
+
+Ensure you have **Python 3.11** or **3.12** installed and that you are located at the root of the repository. Run the following commands to set up your environment:
+
+```bash
+# Install pipx if you haven't already
 pip install pipx
+
+# Install poetry using pipx
 pipx install poetry 
+
+# Install project dependencies
 poetry install
 
-# How to use it:
-You will find an example in src/HPO-VAE/Example/launch_script.py. Execute it using poetry run python -m HPO_VAE_EGObox.Example.launch_script for instance.
+```
 
-Globally, the class related to:
-- Bayesian optimization is PbSearchMinNrjAccuracy, defined in ProblemHPONrjMin.py.
-- energy measurement is Simulation, defined in ScientificSimulation.py
-- Variational AutoEncoder (VAE) model is VAEWrapper, defined in HPO_VAE.py. It is a child class of PbSearchMinNrjAccuracy.
+---
 
-# What optimization problem is it solving?
-Let's consider the Young modules E, the mass density rho, and the energy consumed by computations nrj
-min. weight_1 * normalized_MEAN_SQUARED_ERROR(E_reconstructed, E_true) + weight_2 * normalized_MEAN_SQUARED_ERROR(rho_reconstructed, rho_true) + weight_3 * normalized_nrj
+## 🚀 Usage
 
-subject to learning rate, dropout_encoder, dropout_decoder, klFactor, # of layer_encoder, # of layer_decoder, # of neuron per layer in encoder, # of neuron per layer in decoder  
+You can find a ready-to-use example in `src/HPO-VAE/Example/launch_script.py`.
+
+To execute the example, run the following command from your terminal:
+
+```bash
+poetry run python -m HPO_VAE_EGObox.Example.launch_script
+
+```
+
+---
+
+## 🧩 Core Architecture
+
+The global architecture is divided into three main components:
+
+| Component | Class Name | File | Description |
+| --- | --- | --- | --- |
+| **Bayesian Optimization** | `PbSearchMinNrjAccuracy` | `ProblemHPONrjMin.py` | Handles the search for optimal hyperparameters. |
+| **Energy Measurement** | `Simulation` | `ScientificSimulation.py` | Manages and evaluates the energy consumption of computations. |
+| **VAE Model** | `VAEWrapper` | `HPO_VAE.py` | The Variational AutoEncoder model itself. *(Note: This is a child class of `PbSearchMinNrjAccuracy`)*. |
+
+---
+
+## 🧮 The Optimization Problem
+
+The framework seeks to minimize a weighted combination of the normalized Mean Squared Error (nMSE) for reconstructed Young's Modulus ($E$) and mass density ($\rho$), alongside the normalized energy consumption ($\text{nrj}$).
+
+### **Objective Function**
+
+$$\min \left( w_1 \cdot \text{nMSE}(E_{\text{recon}}, E_{\text{true}}) + w_2 \cdot \text{nMSE}(\rho_{\text{recon}}, \rho_{\text{true}}) + w_3 \cdot \text{nrj}_{\text{norm}} \right)$$
+
+### **Subject to (Search Space / Hyperparameters)**
+
+The optimization is formulated as the following:
+
+* **Learning rate**
+* **Dropout rates** (`dropout_encoder`, `dropout_decoder`)
+* **KL factor** (`klFactor`)
+* **Network depth** (Number of layers in the encoder and decoder)
+* **Network width** (Number of neurons per layer in the encoder and decoder)
