@@ -1,0 +1,18 @@
+# Environments
+.venv/
+env/
+venv/
+.conda/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Result folders
+results/
+CodeCarbon_measures/
+
+# Poetry local configuration
+poetry.toml

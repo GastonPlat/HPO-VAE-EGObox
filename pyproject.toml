@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "HPO-VAE-EGObox"
+version = "0.1.0"
+description = "A project using Bayesian optimization for hyperparameter selection. It is focused on identifying the best parameter settings of a torch VAE to reconstruct the Young modulus and mass densities mechanical characteristics"
+authors = ["Gaston Plat <gaston.plat@isae-supaero.fr>"]
+readme = "README.md"
+
+packages = [
+    { include = "HPO_VAE_EGObox", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+codecarbon = "^3.2"
+smt = "^2.14"
+smt-design-space-ext = "^0.5"
+numpy = "^2.4"
+pandas = "^3.0"
+matplotlib = "^3.11"
+egobox = "^0.37"
+torch = { version = "^2.3", source = "pytorch" }
+openpyxl = "^3.1.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121" # Use /cpu if you don't have an NVIDIA GPU
+priority = "explicit"
