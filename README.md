@@ -60,7 +60,7 @@ $$\min \left( w_1 \cdot \text{nMSE}(E_{\text{recon}}, E_{\text{true}}) + w_2 \cd
 The optimization is formulated as the following:
 
 * **Learning rate**
-* **Dropout rates** (`dropout_encoder`, `dropout_decoder`)
-* **KL factor** (`klFactor`)
+* **Dropout rates** 
+* **KL factor** 
 * **Network depth** (Number of layers in the encoder and decoder)
 * **Network width** (Number of neurons per layer in the encoder and decoder)
